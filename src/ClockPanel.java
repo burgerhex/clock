@@ -24,7 +24,7 @@ public class ClockPanel extends JPanel {
     private static final int       TICKS_LENGTH = 20;
     private static final int MINOR_TICKS_LENGTH = 10;
     private static final int       HOURS_LENGTH = 75;
-    private static final int     MINUTES_LENGTH = 125;
+    private static final int     MINUTES_LENGTH = 150;
     private static final int     SECONDS_LENGTH = 200;
 
     private static final Color       HOURS_COLOR = Color.DARK_GRAY;
@@ -33,7 +33,8 @@ public class ClockPanel extends JPanel {
     private static final Color      CIRCLE_COLOR = Color.BLACK;
     private static final Color       TICKS_COLOR = Color.BLACK;
     private static final Color MINOR_TICKS_COLOR = Color.BLACK;
-    private static final Color          BG_COLOR = Color.LIGHT_GRAY;
+    private static final Color  CLOCK_FACE_COLOR = Color.decode("#eeeeee");
+    private static final Color          BG_COLOR = Color.decode("#dddddd");
 
     private static final int    HOURS_PER_CYCLE = 12;
     private static final int   MINUTES_PER_HOUR = 60;
@@ -94,6 +95,8 @@ public class ClockPanel extends JPanel {
 
         Color before = g.getColor();
 
+        g.setColor(CLOCK_FACE_COLOR);
+        g.fillOval(PAD, PAD, SIZE - 2 * PAD, SIZE - 2 * PAD);
         g.setColor(CIRCLE_COLOR);
         g.drawOval(PAD, PAD, SIZE - 2 * PAD, SIZE - 2 * PAD);
 
@@ -120,7 +123,7 @@ public class ClockPanel extends JPanel {
         }
 
         // hide middle part of lines
-        g.setColor(BG_COLOR);
+        g.setColor(CLOCK_FACE_COLOR);
         int hidingCoord = PAD + TICKS_LENGTH;
         int hidingSize  = 2 * (RADIUS - TICKS_LENGTH);
         g.fillOval(hidingCoord, hidingCoord, hidingSize, hidingSize);
@@ -148,7 +151,7 @@ public class ClockPanel extends JPanel {
         }
 
         // hide middle part of lines
-        g.setColor(BG_COLOR);
+        g.setColor(CLOCK_FACE_COLOR);
         int hidingCoord = PAD + MINOR_TICKS_LENGTH;
         int hidingSize  = 2 * (RADIUS - MINOR_TICKS_LENGTH);
         g.fillOval(hidingCoord, hidingCoord, hidingSize, hidingSize);
